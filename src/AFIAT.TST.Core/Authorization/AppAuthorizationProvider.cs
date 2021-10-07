@@ -29,6 +29,17 @@ namespace AFIAT.TST.Authorization
             //COMMON PERMISSIONS (FOR BOTH OF TENANTS AND HOST)
 
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
+
+            var categories = pages.CreateChildPermission(AppPermissions.Pages_Categories, L("Categories"));
+            categories.CreateChildPermission(AppPermissions.Pages_Categories_Create, L("CreateNewCategory"));
+            categories.CreateChildPermission(AppPermissions.Pages_Categories_Edit, L("EditCategory"));
+            categories.CreateChildPermission(AppPermissions.Pages_Categories_Delete, L("DeleteCategory"));
+
+            var posts = pages.CreateChildPermission(AppPermissions.Pages_Posts, L("Posts"));
+            posts.CreateChildPermission(AppPermissions.Pages_Posts_Create, L("CreateNewPost"));
+            posts.CreateChildPermission(AppPermissions.Pages_Posts_Edit, L("EditPost"));
+            posts.CreateChildPermission(AppPermissions.Pages_Posts_Delete, L("DeletePost"));
+
             pages.CreateChildPermission(AppPermissions.Pages_DemoUiComponents, L("DemoUiComponents"));
 
             var administration = pages.CreateChildPermission(AppPermissions.Pages_Administration, L("Administration"));

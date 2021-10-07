@@ -55,6 +55,10 @@
                             </div>"
 					},
 					{
+					"type" : "file",
+					"content" : ""
+					},
+					{
 					"type" : "default",
 					"content" : "
 							<div class=\"col-md-3\">
@@ -195,7 +199,7 @@
             "placeholder": "{{Page_Header}}",
             "condition": "{{Project_Version_Here}} >= 090000",
             "content": "
-                <abp-page-subheader title=\"@L(\"{{Entity_Name_Plural_Here}}\")\" description=\"@L(\"{{Entity_Name_Plural_Here}}HeaderInfo\")\">
+                <abp-page-subheader title='@L(\"{{Entity_Name_Plural_Here}}\")' description='@L(\"{{Entity_Name_Plural_Here}}HeaderInfo\")'>
                      {{Get_Excel_Button_Here}}
                      @if (IsGranted(AppPermissions.{{Permission_Name_Here}}_Create))
                      {
@@ -233,7 +237,17 @@
             "placeholder": "{{Form_Class_Here}}",
             "condition": "{{Project_Version_Here}} >= 090000",
             "content": "form"
-        }
+        },
+        {
+            "placeholder": "{{Seperator_Div_Here}}",
+            "condition": "{{Project_Version_Here}} < 090000",
+            "content": "<div class=\"kt-separator kt-separator--border-dashed\"></div>"
+        },
+        {
+            "placeholder": "{{Seperator_Div_Here}}",
+            "condition": "{{Project_Version_Here}} >= 090000",
+            "content": "<div class=\"separator separator-dashed\"></div>"
+        },
 	],
 "navigationPropertyOneToManyTableTemplates": [
         {
