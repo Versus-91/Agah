@@ -17,6 +17,8 @@ namespace AFIAT.TST.EntityFrameworkCore
 {
     public class TSTDbContext : AbpZeroDbContext<Tenant, Role, User, TSTDbContext>, IAbpPersistedGrantDbContext
     {
+        public virtual DbSet<Tag> Tags { get; set; }
+
         public virtual DbSet<Category> Categories { get; set; }
 
         public virtual DbSet<Post> Posts { get; set; }
@@ -51,10 +53,14 @@ namespace AFIAT.TST.EntityFrameworkCore
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Post>(p =>
+            modelBuilder.Entity<Tag>(t =>
             {
-                p.HasIndex(e => new { e.TenantId });
+                t.HasIndex(e => new { e.TenantId });
             });
+            modelBuilder.Entity<Post>(p =>
+                       {
+                           p.HasIndex(e => new { e.TenantId });
+                       });
             modelBuilder.Entity<Category>(c =>
                        {
                            c.HasIndex(e => new { e.TenantId });

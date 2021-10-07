@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="en">
   <texts>
+    <text name="Tag">Tag</text>
+    <text name="AFIAT.TST.Posts.Tag">Tag</text>
+    <text name="TagsHeaderInfo">Tags header info</text>
+    <text name="CreateNewTag">Create new tag</text>
+    <text name="EditTag">Edit tag</text>
+    <text name="DeleteTag">Delete tag</text>
+    <text name="Tags">Tags</text>
     <text name="CategoryName">Category name</text>
     <text name="PickCategory">Pick category</text>
     <text name="Category">Category</text>
