@@ -11,7 +11,7 @@
     AbpAntiForgeryManager.SetCookie(Context);
 }
 <!DOCTYPE html>
-<html lang="en" @(CultureHelper.IsRtl ? "dir=\"rtl\"" : "" )>
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="utf-8">
     <title>TST</title>
@@ -32,19 +32,14 @@
         <meta property="og:image" content="-CUSTOMER VALUE-">
         <meta property="og:url" content="-CUSTOMER VALUE-">*@
 
-    <link rel="shortcut icon" href="~/favicon.ico">
+    <link rel="shortcut icon" href="~/favicon.png">
 
-    <link rel="stylesheet" href="~/fonts/fonts-open-sans.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/fonts/fonts-ptsans-narrow.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/fonts/fonts-sourcesans-pro.css" asp-append-version="true" />
-
-    <link rel="stylesheet" href="~/view-resources/Views/_Bundles/frontend-libs@(CultureHelper.IsRtl ? "-rtl" : "").min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/view-resources/Views/_Bundles/frontend-metronic@(CultureHelper.IsRtl ? "-rtl" : "").min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/dist/js/app.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/dist/js/main.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
 
     @await RenderSectionAsync("Styles", false)
 
-    <link rel="stylesheet" href="~/Common/_Bundles/common-styles.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/view-resources/Views/Layout/layout.min.css" asp-append-version="true" />
 
     <script type="text/javascript">
         @* This is used to get the application's root path from javascript.
@@ -55,18 +50,86 @@
 </head>
 <body class="corporate">
 
-    @await Component.InvokeAsync(typeof(HeaderViewComponent), new { currentPageName = ViewBag.CurrentPageName })
-
-    <div class="main">
-        <div class="container">
-            @RenderBody()
+<nav class="navbar is-transparent is-centered is-fixed-top is-fade" x-data="initNavbar()"  x-on:scroll.window="scroll()" 
+    :class="{
+        'is-scrolled': scrolled,
+        '': !scrolled,
+        'is-solid': mobileOpen,
+        '': !mobileOpen,
+        'is-search-mobile': mobileSearch,
+        '': !mobileSearch
+    }">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img class="navbar-logo" src="img/logo/logo.svg" alt="">
+            </a>
+            <a class="navbar-item is-icon" @@click="toggleMobileSearch()">
+                <i data-feather="search"></i>
+            </a>
+            <div class="navbar-burger" @@click="openMobileMenu()">
+                <div class="menu-toggle">
+                    <div class="icon-box-toggle is-navbar" :class="{
+                            'active': mobileOpen,
+                            '': !mobileOpen
+                        }">
+                        <div class="rotate">
+                            <i class="icon-line-top"></i>
+                            <i class="icon-line-center"></i>
+                            <i class="icon-line-bottom"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-menu b-centered-mobile b-centered-tablet-p" :class="{
+                'is-active': mobileOpen,
+                '': !mobileOpen
+            }">
+            <div class="navbar-start">
+                <div class="left-brand">
+                    <a class="navbar-item" href="/">
+                        <img src="~/favicon.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-center">
+                <div class="navbar-item is-search">
+                    <div class="control has-icons-left has-icons-right">
+                        <input x-on:keyup="searchData($event)" x-model="searchModel" class="input is-rounded" type="text" placeholder="جستجو...">
+                        <span class="icon is-small is-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-search">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </span>
+                        <span class="icon is-small is-close is-right" @@click.prevent="toggleMobileSearch()" 
+                            :class="{ '': searchModel === '' }">
+                            <i data-feather="x" class="no-click"></i>
+                        </span>
+                        <div id="search-results" class="search-results has-slimscroll"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-end">
+                <a href="/pages" class="navbar-item">مرور</a>
+                <div class="navbar-item">
+                    <a href="#" class="button is-primary">
+                        <span>ثبت نام </span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
+</nav>
+            @RenderBody()
 
     @await Html.PartialAsync("~/Views/Layout/_Footer.cshtml")
 
     <script src="~/view-resources/Views/_Bundles/frontend-libs.min.js" asp-append-version="true"></script>
-
+    <script src="~/dist/js/bundle.js" asp-append-version="true"></script>
     <script type="text/javascript">
         abp.localization.defaultSourceName = '@LocalizationSourceName';
         abp.security.antiForgery.tokenCookieName = "Public-XSRF-TOKEN";

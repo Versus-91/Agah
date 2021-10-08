@@ -1,4 +1,6 @@
-﻿using AFIAT.TST.Posts.Dtos;
+﻿using AFIAT.TST.Pages.Dtos;
+using AFIAT.TST.Pages;
+using AFIAT.TST.Posts.Dtos;
 using AFIAT.TST.Posts;
 using Abp.Application.Editions;
 using Abp.Application.Features;
@@ -50,6 +52,8 @@ namespace AFIAT.TST
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {
+            configuration.CreateMap<CreateOrEditPageDto, Page>().ReverseMap();
+            configuration.CreateMap<PageDto, Page>().ReverseMap();
             configuration.CreateMap<CreateOrEditTagDto, Tag>().ReverseMap();
             configuration.CreateMap<TagDto, Tag>().ReverseMap();
             configuration.CreateMap<CreateOrEditCategoryDto, Category>().ReverseMap();

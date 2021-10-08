@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="en">
   <texts>
+    <text name="Page">Page</text>
+    <text name="AFIAT.TST.Pages.Page">Page</text>
+    <text name="ImageSrc">Image src</text>
+    <text name="PagesHeaderInfo">Pages header info</text>
+    <text name="CreateNewPage">Create new page</text>
+    <text name="EditPage">Edit page</text>
     <text name="Tag">Tag</text>
     <text name="AFIAT.TST.Posts.Tag">Tag</text>
     <text name="TagsHeaderInfo">Tags header info</text>
