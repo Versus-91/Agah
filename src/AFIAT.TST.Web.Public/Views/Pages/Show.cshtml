@@ -1,25 +1,106 @@
-﻿   @using System.Threading.Tasks
-@using AFIAT.TST.Web.Public.Startup
-@using CultureHelper = AFIAT.TST.Localization.CultureHelper
+﻿@using AFIAT.TST.Web.Public.Startup
 @{
-    ViewBag.CurrentPageName = FrontEndPageNames.Home;
+	ViewBag.Title = "خانه";
 }
+@section meta{
+<meta name="description" content="information about bitcoin.">
+}
+<section class="hero bd-hero bd-is-extensions">
+	<div class="hero-body">
+		<div class="container">
+			<div class="bd-hero-body">
+				<div class="bd-hero-heading">
+					<h1 class="title algolia-lvl0">
+						<span class="icon">
+							<i class="fas fa-plug"></i>
+						</span>
+						<p>بیتکوین <strong>Bitcoin</strong></p>
+					</h1>
+					<div class="subtitle is-4 algolia-lvl1">
+						<p class="is-size-5">بیت‌کوین یک رمزارز و یک نظام پرداخت جهانی[۱] با کارکردهای مشابه پول بدون پشتوانه است. از نظر فنی بیت‌کوین نخستین پول 
+						دیجیتال نامتمرکز است، چرا که بدون بانک مرکزی یا مسئول مرکزی کار می‌کند.[۱] این شبکه همتابه‌همتا است
+						و تراکنش‌ها را مستقیماً و بدون واسطه میان کاربران انجام می‌دهد
+						.[۱]به دلیل محبوبیت بالای بیت کوین برخی به آن لقب پادشاه رمزارزها را
+					</p>
+					</div>
+				</div>
+				<div class="bd-hero-carbon">
+					<div id="carboncontainer">
+							<span class="icon has-text-success">
+							<i class="fas fa-play fa-2x"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="bd-call bd-is-twitter">
+	<div class="bd-call-body">
+		<p class="bd-call-text">
+			فکر می کنید جای موضوع خاصی تو سایت ما خالیه ؟ <strong>درباره اش به ما بگید</strong> <span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px;">🤗</span>
+		</p>
+		<p class="bd-call-button">
+			<a class="bd-tw-button bd-fat-button button is-twitter" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Here is my lovely website!&amp;hashtags=madewithbulma">
+				<span class="icon">
+					<i class="fab fa-twitter"></i>
+				</span>
+				<span>
+					#madewithbulma
+				</span>
+			</a>
+		</p>
+	</div>
+</div>
+<section class="section">
+ <div class="container">
+  <div class="columns">
+   <div class="column">
+	<div class="notification is-info">
+	 <h1 class="title is-size-4">Bulma ?</h1>
+	 Bulma is a modern CSS framework from @@jgthms, based on Flexbox.
+	 Using Bulma, we can describe our website's design using just classes. ᕕ( ᐛ )ᕗ
+	</div>
+   </div>
+   <div class="column">
+	<div class="notification is-primary">
+	 Flexbox is a CSS spec that makes sectioning and aligning more natural.
+	 We don't need to know Flexbox but it's how Bulma works behind-the-scenes. ⦤(^ー^)⦥
+	</div>
+   </div>
+   <div class="column">
+	<div class="notification is-warning">
+	 Instead of writing our CSS per-element, we can use predefined classes.
+	 With enough classes, we can describe our website design using semantics. ٩(^ᴗ^)۶
+	</div>
+   </div>
+  </div>
+ </div>
+</section>
+@section scripts
+{
+<environment names="Development">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+	<script>
+		var app= new Vue({
+		  el:'#tabs',
+		  data:function(){
+			  return {
+				  tabs : ['links','posts','learn','code','commnets'],
+				  activeTab:'',
+			  }
+		  },
+		  methods:{
+			  setActiveTab:function(tab){
+				  console.log("clicked");
+			  this.activeTab = tab;
+		  }
+		  }
+		});
+	</script>
+</environment>
 
-<div class="hero is-grey is-center">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns is-vcentered mt-6">
-                    <div class="column">
-                        <div class="pt-10 pb-6">
-                            <h1 class="title is-1 is-bold">
-                                صفحات برتر
-                            </h1>
-                            <p class="subtitle is-5 mb-4 mx-auto max-w-5 b-centered-tablet-p text-light">
-                                خوسشی شسی سشیسشیسشی/
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<environment names="Staging,Production">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</environment>
+}
